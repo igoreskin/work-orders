@@ -17,6 +17,7 @@
   width: 40%;
   border: solid 1px black;
   margin: 20px 0;
+  background-color: rgb(241, 246, 248);
 }
 
 .worker {
@@ -112,4 +113,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* SEARCH FIELD */
+
+.filter {
+  margin: 25px 0;
+}
+
+input {
+  width: 38%;
+  height: 28px;
+  border: solid 2px #CCCCCC;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-left: -15px;
+  cursor: pointer;
+}
+
+input:focus { outline: 0; }
+
+i {
+  margin-left: -30px;
 }
