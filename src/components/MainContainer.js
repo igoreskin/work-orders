@@ -10,7 +10,7 @@ const MainContainer = () => {
     try {
       const res = await axios.get('https://www.hatchways.io/api/assessment/work_orders');
 
-      setOrderData(res.data.orders);
+      setOrderData(res.data.orders.sort((el1, el2) => Number(el1.deadline) - Number(el2.deadline)));
       console.log(res.data.orders);
     } catch (error) {
       console.log(error.message)
@@ -26,15 +26,10 @@ const MainContainer = () => {
   const handleOnClick = () => {
     setEarliest(!earliest);
     console.log(earliest)
-    if (earliest) {
-      return orderData.sort((el1, el2) => el1.deadline < el2.deadline )
-    }
   }
-
 
   return (
     <Fragment>
-  
       <div className='toggle'>
         <div className='earliest-latest'>Earliest first&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <label className="switch">
@@ -44,8 +39,10 @@ const MainContainer = () => {
         <div className='earliest-latest'>&nbsp;&nbsp;&nbsp;&nbsp;Latest first</div>
       </div>  
     
-      <div>
-        <Orders orderData={orderData} />
+      <div> { earliest ?
+        <Orders orderData={orderData.sort((el1, el2) => Number(el1.deadline) - Number(el2.deadline))} /> : 
+        <Orders orderData={orderData.sort((el1, el2) => Number(el2.deadline) - Number(el1.deadline))} />
+        }
       </div>
     </Fragment>
   )
