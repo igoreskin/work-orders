@@ -4,18 +4,14 @@ import Orders from './Orders';
 
 const MainContainer = () => {
 
-  const [orderData, setOrderData] = useState({
-    workOrderData: []
-  });
+  const [orderData, setOrderData] = useState([]);
 
   const getWorkOrders = async () => {
     try {
       const res = await axios.get('https://www.hatchways.io/api/assessment/work_orders');
 
-      setOrderData({
-        workOrderData: res.data.orders
-      })
-      // console.log(res.data);
+      setOrderData(res.data.orders);
+      console.log(res.data.orders);
     } catch (error) {
       console.log(error.message)
     }
@@ -27,13 +23,11 @@ const MainContainer = () => {
 
   const [earliest, setEarliest] = useState(true);
 
-  const { workOrderData } = orderData;
-
   const handleOnClick = () => {
     setEarliest(!earliest);
     console.log(earliest)
     if (earliest) {
-      return workOrderData.sort((el1, el2) => el1.deadline < el2.deadline )
+      return orderData.sort((el1, el2) => el1.deadline < el2.deadline )
     }
   }
 
@@ -51,7 +45,7 @@ const MainContainer = () => {
       </div>  
     
       <div>
-        <Orders orderData={workOrderData} />
+        <Orders orderData={orderData} />
       </div>
     </Fragment>
   )
