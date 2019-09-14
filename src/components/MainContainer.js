@@ -1,9 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-
 import Orders from './Orders';
-
-
 
 const MainContainer = () => {
 
@@ -18,7 +15,7 @@ const MainContainer = () => {
       setOrderData({
         workOrderData: res.data.orders
       })
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
       console.log(error.message)
     }
@@ -26,15 +23,37 @@ const MainContainer = () => {
 
   useEffect(() => {
     getWorkOrders();
-  }, [])
+  }, []);
+
+  const [earliest, setEarliest] = useState(true);
 
   const { workOrderData } = orderData;
 
+  const handleOnClick = () => {
+    setEarliest(!earliest);
+    console.log(earliest)
+    if (earliest) {
+      return workOrderData.sort((el1, el2) => el1.deadline < el2.deadline )
+    }
+  }
+
 
   return (
-    <div>
-      <Orders orderData={workOrderData} />
-    </div>
+    <Fragment>
+  
+      <div className='toggle'>
+        <div className='earliest-latest'>Earliest first&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <label className="switch">
+          <input type="checkbox" onClick={handleOnClick}/>
+          <span className="slider round"></span>
+        </label>
+        <div className='earliest-latest'>&nbsp;&nbsp;&nbsp;&nbsp;Latest first</div>
+      </div>  
+    
+      <div>
+        <Orders orderData={workOrderData} />
+      </div>
+    </Fragment>
   )
 }
 

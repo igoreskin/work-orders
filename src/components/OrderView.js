@@ -14,7 +14,7 @@ const OrderView = ({ order }) => {
       setWorkerData({
         worker: res.data.worker
       })
-      console.log(res.data)
+      // console.log(res.data)
     } catch (error) {
       console.log(error.message)
     }
@@ -25,7 +25,7 @@ const OrderView = ({ order }) => {
   }, []);
 
   const { worker } = workerData; 
-  console.log(order)
+  // console.log(order)
   const date = new Date(Number(order.deadline));
   const deadline = date.toLocaleString();
 
