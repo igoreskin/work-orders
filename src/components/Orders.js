@@ -6,7 +6,6 @@ const Orders = ({ orderData}) => {
   const [name, setName] = useState('');
 
   const handleOnClick = e => {
-    // console.log(e.target.value)
     setName(e.target.value)
   }
 

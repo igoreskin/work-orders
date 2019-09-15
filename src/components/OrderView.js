@@ -23,14 +23,10 @@ const OrderView = ({ order, name }) => {
   const date = new Date(Number(order.deadline));
   const deadline = date.toLocaleString();
 
-  // const nameLow = name.toLowerCase();
-  // const workerNameLow = worker.name;
-  // console.log(workerNameLow)
-
   return (
     <Fragment>
     {
-      // (name === '' || nameLow.includes(workerNameLow)) && 
+      (name === '' || name === worker.name) && 
     <Fragment>
       <div className='order-view'>
         <p><strong>{order.name}</strong></p>
