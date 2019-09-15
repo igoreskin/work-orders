@@ -1,13 +1,16 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import OrderView from './OrderView';
 
 const Orders = ({ orderData}) => {
 
-  const renderOrders = orderData.map((order) => <OrderView key={order.id} order={order} />)
+  const [name, setName] = useState('');
 
   const handleOnClick = e => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
+    setName(e.target.value)
   }
+
+  const renderOrders = orderData.map((order) => <OrderView key={order.id} order={order} name={name} />)
 
   return (
     <Fragment>
