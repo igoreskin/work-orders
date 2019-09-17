@@ -26,7 +26,6 @@ const OrderView = ({ order, name }) => {
   return (
     <Fragment>
     {
-      // (name === '' || name === worker.name) && 
       (name === '' || worker.name.toLowerCase().includes(name.toLowerCase())) && 
     <Fragment>
       <div className='order-view'>
