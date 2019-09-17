@@ -5,7 +5,11 @@ const Orders = ({ orderData}) => {
 
   const [name, setName] = useState('');
 
-  const handleOnClick = e => {
+  // const handleOnClick = e => {
+  //   setName(e.target.value)
+  // }
+
+  const handleOnChange = e => {
     setName(e.target.value)
   }
 
@@ -14,7 +18,8 @@ const Orders = ({ orderData}) => {
   return (
     <Fragment>
       <div className='filter'>
-        <input placeholder={`Filter by worker name... `} onClick={e => handleOnClick(e)}/>
+        {/* <input placeholder={`Filter by worker name... `} onClick={e => handleOnClick(e)}/> */}
+        <input placeholder={`Filter by worker name... `} onChange={e => handleOnChange(e)}/>
         <i className="fas fa-search"></i>
       </div>
       <div className='orders'>
@@ -24,4 +29,4 @@ const Orders = ({ orderData}) => {
   )
 }
 
-export default Orders
+export default Orders;
